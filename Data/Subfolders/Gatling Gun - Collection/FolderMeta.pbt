@@ -1,0 +1,187 @@
+MetaVersion: 1
+MarketplaceDetails {
+  Id: "ea272584a3144caeac4ded7ec5a133c9"
+  OwnerAccountId: "cc5250ea866a4e85976dfb1f895489bc"
+  OwnerName: "shallow"
+  Version: "1.0.0"
+}
+AssetIdsOriginalToNew {
+  key: 34968860548925303
+  value: 1622123102974997217
+}
+AssetIdsOriginalToNew {
+  key: 50302253036217786
+  value: 13185121649285614155
+}
+AssetIdsOriginalToNew {
+  key: 307406115803496087
+  value: 9771254847058293200
+}
+AssetIdsOriginalToNew {
+  key: 440168262593430639
+  value: 2114376981666300973
+}
+AssetIdsOriginalToNew {
+  key: 1241386081991059856
+  value: 6789841165681781365
+}
+AssetIdsOriginalToNew {
+  key: 1683114021203363022
+  value: 14732626136169250728
+}
+AssetIdsOriginalToNew {
+  key: 2472577150731722024
+  value: 6757042807227529245
+}
+AssetIdsOriginalToNew {
+  key: 2596987204630806163
+  value: 14879772695198479389
+}
+AssetIdsOriginalToNew {
+  key: 3144871937647846964
+  value: 15595173897310181499
+}
+AssetIdsOriginalToNew {
+  key: 3397223846802806268
+  value: 8255258759178683779
+}
+AssetIdsOriginalToNew {
+  key: 3755103831157633526
+  value: 14546691507160513415
+}
+AssetIdsOriginalToNew {
+  key: 3781202806916646402
+  value: 12633803690726306331
+}
+AssetIdsOriginalToNew {
+  key: 3835480982225221901
+  value: 4304502301994994283
+}
+AssetIdsOriginalToNew {
+  key: 4258055704788809249
+  value: 17409900980798876148
+}
+AssetIdsOriginalToNew {
+  key: 5365267935613329550
+  value: 8048051960960601730
+}
+AssetIdsOriginalToNew {
+  key: 5667343140380340265
+  value: 7334146809032582438
+}
+AssetIdsOriginalToNew {
+  key: 5900853629837661249
+  value: 5106114508385244314
+}
+AssetIdsOriginalToNew {
+  key: 6652974207271369531
+  value: 2846447828012165866
+}
+AssetIdsOriginalToNew {
+  key: 6795206535065158887
+  value: 10348933262268945939
+}
+AssetIdsOriginalToNew {
+  key: 6814536704294328406
+  value: 3405965635838317971
+}
+AssetIdsOriginalToNew {
+  key: 7141370289577604591
+  value: 8069638543505081317
+}
+AssetIdsOriginalToNew {
+  key: 7994313587376320357
+  value: 4654131494541027984
+}
+AssetIdsOriginalToNew {
+  key: 8054870635331248231
+  value: 11807640724489928497
+}
+AssetIdsOriginalToNew {
+  key: 8163343952479535019
+  value: 10899319050990301541
+}
+AssetIdsOriginalToNew {
+  key: 8459825612529451237
+  value: 10660520492403167169
+}
+AssetIdsOriginalToNew {
+  key: 8915025376504697453
+  value: 5298655066877388089
+}
+AssetIdsOriginalToNew {
+  key: 9023864673320310867
+  value: 14162899082696938024
+}
+AssetIdsOriginalToNew {
+  key: 9654009968499969690
+  value: 11828509087537310122
+}
+AssetIdsOriginalToNew {
+  key: 9682361675416847845
+  value: 14772071671358103229
+}
+AssetIdsOriginalToNew {
+  key: 9942056953129052879
+  value: 2344836632840457987
+}
+AssetIdsOriginalToNew {
+  key: 10139659402558168400
+  value: 4271642444542614797
+}
+AssetIdsOriginalToNew {
+  key: 11481617001287633814
+  value: 10884874766053091004
+}
+AssetIdsOriginalToNew {
+  key: 12210489528647249200
+  value: 13055248737607587979
+}
+AssetIdsOriginalToNew {
+  key: 12677308318105702404
+  value: 14568377171993811225
+}
+AssetIdsOriginalToNew {
+  key: 13101892255937846702
+  value: 17919712617592969359
+}
+AssetIdsOriginalToNew {
+  key: 13717934584303958587
+  value: 11737796639398061213
+}
+AssetIdsOriginalToNew {
+  key: 14633489664325534454
+  value: 1631865624412071070
+}
+AssetIdsOriginalToNew {
+  key: 15515637826283224864
+  value: 10005759417123485424
+}
+AssetIdsOriginalToNew {
+  key: 15728676179772725900
+  value: 2184868685404024478
+}
+AssetIdsOriginalToNew {
+  key: 16030632051734573653
+  value: 14121978704299272430
+}
+AssetIdsOriginalToNew {
+  key: 16064653477604779480
+  value: 14432282166795882445
+}
+AssetIdsOriginalToNew {
+  key: 16313312156352177803
+  value: 15786693873671521065
+}
+AssetIdsOriginalToNew {
+  key: 16846082861522067585
+  value: 14135742194234208000
+}
+AssetIdsOriginalToNew {
+  key: 16975801195317677333
+  value: 966073960197075635
+}
+AssetIdsOriginalToNew {
+  key: 17169051963161242240
+  value: 6876102686695103139
+}
