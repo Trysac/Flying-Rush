@@ -36,7 +36,7 @@ Objects {
         }
         Overrides {
           Name: "Label"
-          String: "First to kill 20 enemies wins!"
+          String: "First to kill 15 enemies wins!"
         }
       }
     }

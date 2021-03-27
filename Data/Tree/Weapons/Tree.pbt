@@ -1,6 +1,870 @@
 Name: "Weapons"
 RootId: 3106952686474631345
 Objects {
+  Id: 9955405419184028057
+  Name: "Advanced Shotgun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 17886792431389911077
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Shotgun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -2120
+            Y: 1030
+            Z: 90
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 12862456211160447524
+    }
+  }
+}
+Objects {
+  Id: 317452636428846018
+  Name: "Advanced Crossbow"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 14934994781472954733
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Crossbow"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 30
+            Y: -1010
+            Z: 90
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 639670153132431565
+    }
+  }
+}
+Objects {
+  Id: 17998084805040358659
+  Name: "Advanced Submachine Gun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 830406733361379619
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Submachine Gun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 2270
+            Y: 810
+            Z: 230
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 11665484108892935176
+    }
+  }
+}
+Objects {
+  Id: 14487195097263089174
+  Name: "Advanced Shotgun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 17886792431389911077
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Shotgun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -5320
+            Y: 5000
+            Z: 490
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 12862456211160447524
+    }
+  }
+}
+Objects {
+  Id: 13115507692517896797
+  Name: "Advanced Rocket Launcher"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 5859559678705062760
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Rocket Launcher"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -6220
+            Y: 5660
+            Z: 460
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 8950289088219761440
+    }
+  }
+}
+Objects {
+  Id: 1179420099006761832
+  Name: "Advanced Grenade Launcher"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 4912448984536462195
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Grenade Launcher"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -8260
+            Y: 4870
+            Z: 840
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 1009327035704973659
+    }
+  }
+}
+Objects {
+  Id: 8266448188676122166
+  Name: "Advanced Shotgun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 17886792431389911077
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Shotgun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -8580
+            Y: 3690
+            Z: 840
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 12862456211160447524
+    }
+  }
+}
+Objects {
+  Id: 8385290718694977477
+  Name: "Advanced Submachine Gun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 830406733361379619
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Submachine Gun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -11680
+            Y: 1250
+            Z: 4590
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 11665484108892935176
+    }
+  }
+}
+Objects {
+  Id: 16645336274179049768
+  Name: "Advanced Crossbow"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 14934994781472954733
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Crossbow"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -6450
+            Y: 1620
+            Z: 1780
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 639670153132431565
+    }
+  }
+}
+Objects {
+  Id: 4638435097071100082
+  Name: "Advanced Revolver"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 12491446174189521336
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Revolver"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -11750
+            Y: -2070
+            Z: 720
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 15845207289829915527
+    }
+  }
+}
+Objects {
+  Id: 6811594033834100707
+  Name: "Advanced Shotgun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 17886792431389911077
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Shotgun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -7750
+            Y: -3170
+            Z: 680
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 12862456211160447524
+    }
+  }
+}
+Objects {
+  Id: 11098641219235559586
+  Name: "Advanced Sniper Rifle"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 13428547215643356789
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Sniper Rifle"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -1010
+            Y: -1560
+            Z: 1220
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 371635541734427709
+    }
+  }
+}
+Objects {
+  Id: 4237656115235477516
+  Name: "Advanced Rocket Launcher"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 5859559678705062760
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Rocket Launcher"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 1980
+            Y: -1540
+            Z: 1350
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 8950289088219761440
+    }
+  }
+}
+Objects {
+  Id: 8503132304166394393
+  Name: "Advanced Crossbow"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 14934994781472954733
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Crossbow"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -3720
+            Y: 1770
+            Z: 2860
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 639670153132431565
+    }
+  }
+}
+Objects {
+  Id: 169462100179616359
+  Name: "Advanced Grenade Launcher"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 4912448984536462195
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Grenade Launcher"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -3650
+            Y: 5430
+            Z: 3350
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 1009327035704973659
+    }
+  }
+}
+Objects {
+  Id: 134695252227648881
+  Name: "Advanced Submachine Gun"
+  Transform {
+    Scale {
+      X: 1
+      Y: 1
+      Z: 1
+    }
+  }
+  ParentId: 3106952686474631345
+  WantsNetworking: true
+  Collidable_v2 {
+    Value: "mc:ecollisionsetting:inheritfromparent"
+  }
+  Visible_v2 {
+    Value: "mc:evisibilitysetting:inheritfromparent"
+  }
+  TemplateInstance {
+    ParameterOverrideMap {
+      key: 830406733361379619
+      value {
+        Overrides {
+          Name: "Name"
+          String: "Advanced Submachine Gun"
+        }
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: -10610
+            Y: 5060
+            Z: 2290
+          }
+        }
+        Overrides {
+          Name: "Rotation"
+          Rotator {
+          }
+        }
+        Overrides {
+          Name: "Scale"
+          Vector {
+            X: 0.99999994
+            Y: 0.99999994
+            Z: 1
+          }
+        }
+      }
+    }
+    TemplateAsset {
+      Id: 11665484108892935176
+    }
+  }
+}
+Objects {
   Id: 4489551391694252075
   Name: "Advanced Rocket Launcher"
   Transform {
@@ -1486,60 +2350,6 @@ Objects {
   }
 }
 Objects {
-  Id: 11312757101379320673
-  Name: "Advanced Assault Rifle"
-  Transform {
-    Scale {
-      X: 1
-      Y: 1
-      Z: 1
-    }
-  }
-  ParentId: 3106952686474631345
-  WantsNetworking: true
-  Collidable_v2 {
-    Value: "mc:ecollisionsetting:inheritfromparent"
-  }
-  Visible_v2 {
-    Value: "mc:evisibilitysetting:inheritfromparent"
-  }
-  TemplateInstance {
-    ParameterOverrideMap {
-      key: 13859206571032135798
-      value {
-        Overrides {
-          Name: "Name"
-          String: "Advanced Assault Rifle"
-        }
-        Overrides {
-          Name: "Position"
-          Vector {
-            X: 1430
-            Y: -3240
-            Z: 3310
-          }
-        }
-        Overrides {
-          Name: "Rotation"
-          Rotator {
-          }
-        }
-        Overrides {
-          Name: "Scale"
-          Vector {
-            X: 0.99999994
-            Y: 0.99999994
-            Z: 1
-          }
-        }
-      }
-    }
-    TemplateAsset {
-      Id: 13017835671444468681
-    }
-  }
-}
-Objects {
   Id: 12457451227677772877
   Name: "Advanced Crossbow"
   Transform {
@@ -1559,6 +2369,18 @@ Objects {
   }
   TemplateInstance {
     ParameterOverrideMap {
+      key: 13471641576489486240
+      value {
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 40.0000038
+            Z: 0.090065
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
       key: 14934994781472954733
       value {
         Overrides {
@@ -1568,9 +2390,9 @@ Objects {
         Overrides {
           Name: "Position"
           Vector {
-            X: 150
+            X: 1380
             Y: -3270
-            Z: 3310
+            Z: 3330
           }
         }
         Overrides {
@@ -1622,7 +2444,7 @@ Objects {
         Overrides {
           Name: "Position"
           Vector {
-            X: -1200
+            X: -1080
             Y: -3240
             Z: 3330
           }
@@ -1638,6 +2460,18 @@ Objects {
             X: 0.99999994
             Y: 0.99999994
             Z: 1
+          }
+        }
+      }
+    }
+    ParameterOverrideMap {
+      key: 14749731395682317164
+      value {
+        Overrides {
+          Name: "Position"
+          Vector {
+            X: 30.0000057
+            Z: 10
           }
         }
       }

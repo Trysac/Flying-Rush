@@ -48,7 +48,7 @@ Objects {
       value {
         Overrides {
           Name: "PlayerJumpMaxCount"
-          Int: 10
+          Int: 7
         }
         Overrides {
           Name: "IsMountEnabled"
@@ -98,7 +98,7 @@ Objects {
     }
     Overrides {
       Name: "cs:ReplaceOnEachRespawn"
-      Bool: true
+      Bool: false
     }
     Overrides {
       Name: "cs:EquipmentTemplate:tooltip"

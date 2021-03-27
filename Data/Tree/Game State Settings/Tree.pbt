@@ -50,7 +50,7 @@ Objects {
         }
         Overrides {
           Name: "cs:KillLimit"
-          Int: 20
+          Int: 15
         }
       }
     }
