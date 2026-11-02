@@ -35,6 +35,7 @@ namespace FlyingRush.Game
         int pathGoalNode = -1;
         FighterBody target;
         FighterBody lastAttacker;
+        FighterBody lostTarget;
         Vector3 lastSeen;
         float sinceSeen = float.PositiveInfinity;
         float senseTimer;
@@ -121,7 +122,7 @@ namespace FlyingRush.Game
                 SinceEnemySeen = sinceSeen,
                 NearestPadDistance = padDistance,
                 SinceHurt = body.Fighter.Vitals.SinceHurt,
-                WeaponRange = gun.Stats.Range,
+                WeaponRange = gun.Stats.EngageRange,
             });
 
             Vector3 wish = Vector3.zero;
@@ -194,8 +195,14 @@ namespace FlyingRush.Game
             }
             if (best != target)
             {
+                // The same enemy popping back into view a moment later is still being tracked.
+                bool reappeared = best != null && best == lostTarget && sinceSeen < BotBrain.FightMemory;
+                if (target != null)
+                {
+                    lostTarget = target;
+                }
                 target = best;
-                if (best != null)
+                if (best != null && !reappeared)
                 {
                     brain.Acquire();
                     aimTimer = 0f;
@@ -231,7 +238,9 @@ namespace FlyingRush.Game
             float pitch = Mathf.MoveTowards(body.Pitch, wantPitch, brain.Profile.TurnSpeed * 0.7f * deltaTime);
             body.Look(yaw, pitch);
 
-            float off = Vector3.Angle(body.AimDirection, to);
+            // Fire once the view has caught up with where the bot means to aim (target plus error).
+            Vector3 meant = Quaternion.Euler(-wantPitch, wantYaw, 0f) * Vector3.forward;
+            float off = Vector3.Angle(body.AimDirection, meant);
             Gun gun = body.Loadout.Current;
             if (brain.ShouldFire(off, stats.Automatic, deltaTime))
             {
@@ -257,7 +266,7 @@ namespace FlyingRush.Game
                 wish = (strafe - flatTo * 0.5f).normalized;
             }
             wish = AvoidEdges(wish);
-            if (brain.WantsCombatJump() || (!body.Grounded && body.Velocity.y < -3f && body.Jumps.Left > 3 && GroundBelow() > 4f))
+            if (brain.WantsCombatJump(deltaTime) || (!body.Grounded && body.Velocity.y < -3f && body.Jumps.Left > 3 && GroundBelow() > 4f))
             {
                 jump = true;
             }
