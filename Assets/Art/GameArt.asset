@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c70cecf32fc6cb4a8c24c0320bef7f8, type: 3}
+  m_Name: GameArt
+  m_EditorClassIdentifier: FlyingRush.Game::FlyingRush.Game.GameArt
+  Floor: {fileID: 2100000, guid: f77c17dd7abf8c84494accca56b703d8, type: 2}
+  Wall: {fileID: 2100000, guid: 679a6ccc87b507c458ba4b37c7e785e2, type: 2}
+  Concrete: {fileID: 2100000, guid: 05fa4c225c5958143a19327a3b4f0cf9, type: 2}
+  Metal: {fileID: 2100000, guid: 509c383931645a84a9743c20d374d3ec, type: 2}
+  Containers:
+  - {fileID: 2100000, guid: 146df14f01b7db546b8ad197be233573, type: 2}
+  - {fileID: 2100000, guid: 4ddb4f1c15d95914c8ae6bd45fc74cb0, type: 2}
+  - {fileID: 2100000, guid: 8d0ac87025601e44cbc65303848b1048, type: 2}
+  - {fileID: 2100000, guid: 1201b888d77ceea4b87ed5058661cc57, type: 2}
+  - {fileID: 2100000, guid: be774553d130b9a4c964cba2e1466959, type: 2}
+  - {fileID: 2100000, guid: f4477c3fe11155b438a6a888e1bf7964, type: 2}
+  - {fileID: 2100000, guid: 86816bfd515e5eb4fb063e43791c0d7e, type: 2}
+  Neon: {fileID: 2100000, guid: 7add647f5859faf4a9fdc69737848e2a, type: 2}
+  Teal: {fileID: 2100000, guid: 833c0c97f9bdd6a4e945d588d94fd712, type: 2}
+  Grid: {fileID: 2100000, guid: a7bd2a0883a204944b375cf5c9fa98e1, type: 2}
+  Pad: {fileID: 2100000, guid: 2914fffe7e8705c42bb6a622422a6d0a, type: 2}
+  Sky: {fileID: 2100000, guid: 916a761cd1603fd43be4d3d10d13779d, type: 2}
+  Fighter: {fileID: 2100000, guid: fd05fb65a8aa90c4c97bae69ad061b00, type: 2}
+  Visor: {fileID: 2100000, guid: fbed17a46d7c9c0438e0e34c7d52b50f, type: 2}
+  Gun: {fileID: 2100000, guid: b8930a7640eefe140b99c64c5b4f0de8, type: 2}
+  Tracer: {fileID: 2100000, guid: 9ce82c9711adec14c973824cc3f9f18d, type: 2}
+  Glow: {fileID: 2100000, guid: 660cae778bc4f5b49ba718512bf4b1ae, type: 2}
+  Spark: {fileID: 2100000, guid: b0848d9b93b37084c808d421e0670387, type: 2}
+  Rifle: {fileID: 8300000, guid: b6f17cf171187fc458230c62e5f4c05a, type: 3}
+  Shotgun: {fileID: 8300000, guid: 478130d70058bb047951710b6c9a1946, type: 3}
+  Sniper: {fileID: 8300000, guid: b84efaec0eb813142b2a4c483d53882d, type: 3}
+  RocketFire: {fileID: 8300000, guid: 4669c9fd2934cc240bd4b5b8af494cb0, type: 3}
+  Explosion: {fileID: 8300000, guid: b84404c9a98e5e24b935496f47e47cbc, type: 3}
+  Railgun: {fileID: 8300000, guid: afb5e3dbf53752b419eaf0cd2a364e2b, type: 3}
+  Reload: {fileID: 8300000, guid: 822f3c0a27db71447825b0581272a75f, type: 3}
+  Empty: {fileID: 8300000, guid: c41dcbdf2b50b694b9b8e1d3a4286982, type: 3}
+  Switch: {fileID: 8300000, guid: 7692b3f12ea95744db2b6291e1a2e13f, type: 3}
+  Pickup: {fileID: 8300000, guid: d30b9f0372e948c4292b0632bd9583dd, type: 3}
+  Jump: {fileID: 8300000, guid: c1a9397ee6f383b4e8077a24a8604f5b, type: 3}
+  AirJump: {fileID: 8300000, guid: d546ef7f2fcb39e4e910da06100764a5, type: 3}
+  Land: {fileID: 8300000, guid: 0ebc369933e166c4db5349a726474893, type: 3}
+  Hit: {fileID: 8300000, guid: 9e88ce930ad673b438ad861fceb5afc8, type: 3}
+  Headshot: {fileID: 8300000, guid: 3b980ab1ba361f846952ff23e6ef66b4, type: 3}
+  Kill: {fileID: 8300000, guid: a8e570a4804f3494e9c70f1a3de4ae9f, type: 3}
+  Hurt: {fileID: 8300000, guid: cc8cea666c68bec4eac5ffea1a35bfdf, type: 3}
+  Death: {fileID: 8300000, guid: 97e952a130826964ea7d61c44a4834e4, type: 3}
+  Countdown: {fileID: 8300000, guid: 2fdc0675294ea1248afd1c5d9f139035, type: 3}
+  Go: {fileID: 8300000, guid: c7ad7ea4864989541b4075b3e8588793, type: 3}
+  Streak: {fileID: 8300000, guid: c5860d893ae01994780132a1ea13d2f4, type: 3}
+  Win: {fileID: 8300000, guid: 20e11af0fdf8dbf469414632dc7b55ee, type: 3}
+  Lose: {fileID: 8300000, guid: f848d955b0db3dd43ac33e89a910d2bb, type: 3}
+  Move: {fileID: 8300000, guid: 4ea6ecd11ac7c3046ac8102257278904, type: 3}
+  Select: {fileID: 8300000, guid: 3fac9700337742c43bab487bbc6eef6d, type: 3}
+  Pause: {fileID: 8300000, guid: fe6071dbc364f1e4497529e95229f66f, type: 3}
+  TitleMusic: {fileID: 8300000, guid: e00d1a4dd8309a84790e9f738b6d2b57, type: 3}
+  BattleMusic: {fileID: 8300000, guid: 0b115b57b9e86c54d93c4d5b96eaef32, type: 3}
