@@ -1,0 +1,17 @@
+{
+    "name": "FlyingRush.Game",
+    "rootNamespace": "FlyingRush.Game",
+    "references": [
+        "FlyingRush.Core",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

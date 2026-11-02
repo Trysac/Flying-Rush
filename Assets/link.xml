@@ -1,0 +1,12 @@
+<!--
+  Shapes.Primitive builds models from Unity's primitives and removes their colliders at once.
+  Keep the collider classes those primitives come with, or a stripped WebGL player logs an
+  error for every primitive it creates.
+-->
+<linker>
+    <assembly fullname="UnityEngine.PhysicsModule">
+        <type fullname="UnityEngine.CapsuleCollider" preserve="all" />
+        <type fullname="UnityEngine.SphereCollider" preserve="all" />
+        <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    </assembly>
+</linker>
