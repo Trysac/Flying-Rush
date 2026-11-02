@@ -99,7 +99,7 @@ ffmpeg). The README screenshots come from an opt-in hook: run a built player wit
 - **Rules without the engine.** Weapons, health, the seven jumps, the match rules, team
   balance, spawns, records and settings, the map layout, the bots' waypoint graph with A* and
   the bots' decisions live in `Assets/Scripts/Core`, a plain C# assembly with no Unity
-  references, covered by 95 deterministic EditMode tests: seeded generators make spread and
+  references, covered by 94 deterministic EditMode tests: seeded generators make spread and
   aim errors repeatable, and the tests check things like "every waypoint can be reached from
   every spawn", "every block has a half-turn twin so neither team has the better side" and
   "no link climbs higher than the jumps allow". 14 PlayMode tests drive the real scene: title,
