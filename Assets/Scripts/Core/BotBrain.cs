@@ -32,23 +32,28 @@ namespace FlyingRush.Core
         public float SightRange;
         /// <summary>Seconds it holds the rifle's trigger before a short pause.</summary>
         public float Burst;
+        /// <summary>Its hits deal this share of the weapon's damage, so easier bots are beatable.</summary>
+        public float DamageScale;
 
         public static BotProfile For(BotDifficulty difficulty) => difficulty switch
         {
             BotDifficulty.Easy => new BotProfile
             {
-                Difficulty = difficulty, Reaction = 0.7f, InitialError = 10f, SteadyError = 3.6f, SettleSeconds = 1.6f,
-                MovementPenalty = 0.55f, TurnSpeed = 150f, FireCone = 9f, RetreatHealth = 0.2f, SightRange = 45f, Burst = 0.35f,
+                Difficulty = difficulty, Reaction = 0.75f, InitialError = 11f, SteadyError = 4.5f, SettleSeconds = 1.8f,
+                MovementPenalty = 0.6f, TurnSpeed = 150f, FireCone = 9f, RetreatHealth = 0.2f, SightRange = 45f, Burst = 0.3f,
+                DamageScale = 0.5f,
             },
             BotDifficulty.Hard => new BotProfile
             {
-                Difficulty = difficulty, Reaction = 0.24f, InitialError = 4.5f, SteadyError = 0.9f, SettleSeconds = 0.7f,
-                MovementPenalty = 0.18f, TurnSpeed = 420f, FireCone = 4f, RetreatHealth = 0.35f, SightRange = 90f, Burst = 0.9f,
+                Difficulty = difficulty, Reaction = 0.26f, InitialError = 5f, SteadyError = 1.4f, SettleSeconds = 0.8f,
+                MovementPenalty = 0.2f, TurnSpeed = 400f, FireCone = 4f, RetreatHealth = 0.35f, SightRange = 90f, Burst = 0.7f,
+                DamageScale = 0.9f,
             },
             _ => new BotProfile
             {
-                Difficulty = BotDifficulty.Normal, Reaction = 0.42f, InitialError = 7f, SteadyError = 2f, SettleSeconds = 1.1f,
-                MovementPenalty = 0.35f, TurnSpeed = 260f, FireCone = 6f, RetreatHealth = 0.3f, SightRange = 65f, Burst = 0.6f,
+                Difficulty = BotDifficulty.Normal, Reaction = 0.45f, InitialError = 8f, SteadyError = 2.8f, SettleSeconds = 1.2f,
+                MovementPenalty = 0.4f, TurnSpeed = 260f, FireCone = 6f, RetreatHealth = 0.3f, SightRange = 65f, Burst = 0.45f,
+                DamageScale = 0.7f,
             },
         };
     }
@@ -200,7 +205,7 @@ namespace FlyingRush.Core
             burstLeft -= deltaTime;
             if (burstLeft <= 0f)
             {
-                pauseLeft = rng.Range(0.18f, 0.4f);
+                pauseLeft = rng.Range(0.25f, 0.5f);
             }
             return true;
         }

@@ -154,6 +154,9 @@ namespace FlyingRush.Core.Tests
             Assert.That(easy.TurnSpeed, Is.LessThan(normal.TurnSpeed));
             Assert.That(normal.TurnSpeed, Is.LessThan(hard.TurnSpeed));
             Assert.That(easy.SightRange, Is.LessThan(hard.SightRange));
+            Assert.That(easy.DamageScale, Is.LessThan(normal.DamageScale));
+            Assert.That(normal.DamageScale, Is.LessThan(hard.DamageScale));
+            Assert.That(hard.DamageScale, Is.LessThanOrEqualTo(1f));
         }
 
         [Test]
@@ -181,7 +184,7 @@ namespace FlyingRush.Core.Tests
             }
 
             Assert.That(paused, Is.True);
-            Assert.That(firing, Is.GreaterThan(frames / 2));
+            Assert.That(firing, Is.GreaterThan(frames / 3));
             Assert.That(firing, Is.LessThan(frames));
         }
 
