@@ -55,7 +55,7 @@ ffmpeg). The README screenshots come from an opt-in hook: run a built player wit
 | Action | Keyboard and mouse | Gamepad |
 |---|---|---|
 | Move / look | WASD / mouse | Left stick / right stick |
-| Jump, up to seven times in the air | Space | A or LB |
+| Jump: one from the ground and up to six more in the air | Space | A or LB |
 | Crouch (the tunnels need it) | Left Ctrl or C | B or right stick click |
 | Shoot / aim down the sights | Left / right mouse button | RT / LT |
 | Reload | R | X |
