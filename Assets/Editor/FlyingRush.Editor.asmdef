@@ -1,0 +1,19 @@
+{
+    "name": "FlyingRush.Editor",
+    "rootNamespace": "FlyingRush.EditorTools",
+    "references": [
+        "FlyingRush.Core",
+        "FlyingRush.Game"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
