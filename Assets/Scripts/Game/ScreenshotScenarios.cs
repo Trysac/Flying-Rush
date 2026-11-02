@@ -130,15 +130,14 @@ namespace FlyingRush.Game
                 case "railgun":
                     yield return Match(MatchMode.FreeForAll);
                     director.BotsFrozen = true;
-                    PlacePlayer(new Vector3(0.5f, 13f, 9.5f), 45f);
-                    yield return new WaitForSecondsRealtime(0.3f);
                     director.Player.Body.Loadout.PickUp(WeaponKind.Railgun);
+                    PlacePlayer(new Vector3(-33f, 0f, 3.5f), 90f);
+                    Stand(Bot(0), new Vector3(-24f, 0f, 3f), 270f);
+                    Stand(Bot(1), new Vector3(-15f, 0f, 2.5f), 270f);
+                    yield return new WaitForSecondsRealtime(0.3f);
                     director.Hud.ClearMessages();
-                    Stand(Bot(0), new Vector3(12f, 0f, 20f), 225f);
-                    Stand(Bot(1), new Vector3(7f, 0f, 24f), 225f);
-                    yield return new WaitForSecondsRealtime(0.2f);
-                    AimAt(Bot(0).Chest);
-                    yield return Shoot(1, 0.05f);
+                    AimAt(Vector3.Lerp(Bot(0).Chest, Bot(1).Chest, 0.5f));
+                    yield return Shoot(1, 0.06f);
                     break;
                 case "tunnel":
                     yield return Match(MatchMode.FreeForAll);
@@ -161,9 +160,11 @@ namespace FlyingRush.Game
                 case "scoreboard":
                     yield return Match(MatchMode.FreeForAll);
                     Score(new[] { 6, 9, 4, 11, 2, 7, 5, 3 });
+                    // Let the pieces of the staged deaths settle before the shot.
+                    yield return new WaitForSecondsRealtime(1.6f);
                     director.Hud.ClearMessages();
                     director.ShowScoreboard = true;
-                    yield return new WaitForSecondsRealtime(0.5f);
+                    yield return new WaitForSecondsRealtime(0.3f);
                     break;
                 case "results":
                     yield return Match(MatchMode.FreeForAll);
