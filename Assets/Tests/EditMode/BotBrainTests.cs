@@ -37,6 +37,19 @@ namespace FlyingRush.Core.Tests
         }
 
         [Test]
+        public void AnEnemyBeyondTheWeaponsRangeIsHuntedNotShotAt()
+        {
+            BotSenses senses = Calm;
+            senses.EnemyVisible = true;
+            senses.EnemyDistance = 60f;
+            senses.WeaponRange = WeaponCatalog.Of(WeaponKind.Rifle).EngageRange;
+
+            Assert.That(Brain().Decide(senses), Is.EqualTo(BotGoal.Hunt));
+            senses.WeaponRange = WeaponCatalog.Of(WeaponKind.Sniper).EngageRange;
+            Assert.That(Brain().Decide(senses), Is.EqualTo(BotGoal.Engage), "a sniper fights from there");
+        }
+
+        [Test]
         public void AHurtBotUnderFireRetreatsUnlessTheEnemyIsTooClose()
         {
             BotSenses senses = Calm;
@@ -76,9 +89,11 @@ namespace FlyingRush.Core.Tests
             BotSenses senses = Calm;
             senses.HasPowerWeapon = false;
             senses.NearestPadDistance = 20f;
-            senses.SinceEnemySeen = 1f;
+            senses.SinceEnemySeen = 0.5f;
 
-            Assert.That(Brain().Decide(senses), Is.EqualTo(BotGoal.CollectWeapon), "a weapon close by beats the hunt");
+            Assert.That(Brain().Decide(senses), Is.EqualTo(BotGoal.Hunt), "an enemy that just ducked out of sight comes first");
+            senses.SinceEnemySeen = 2f;
+            Assert.That(Brain().Decide(senses), Is.EqualTo(BotGoal.CollectWeapon), "a weapon close by beats a colder hunt");
             senses.NearestPadDistance = 60f;
             Assert.That(Brain().Decide(senses), Is.EqualTo(BotGoal.Hunt), "a far weapon waits until the trail goes cold");
             senses.SinceEnemySeen = 20f;
@@ -213,6 +228,22 @@ namespace FlyingRush.Core.Tests
             Assert.That(brain.TurnTowards(10f, 350f, 0.05f), Is.EqualTo(-3f).Within(0.001f));
             Assert.That(brain.TurnTowards(0f, 5f, 0.1f), Is.EqualTo(5f));
             Assert.That(BotBrain.DeltaAngle(170f, -170f), Is.EqualTo(20f).Within(0.001f));
+        }
+
+        [Test]
+        public void CombatJumpsComeAtTheProfilesRateWhateverTheFrameRate()
+        {
+            foreach (float frame in new[] { 1f / 30f, 1f / 144f })
+            {
+                BotBrain brain = Brain(BotDifficulty.Normal, 11);
+                int jumps = 0;
+                int frames = (int)(400f / frame);
+                for (int i = 0; i < frames; i++)
+                {
+                    jumps += brain.WantsCombatJump(frame) ? 1 : 0;
+                }
+                Assert.That(jumps / 400f, Is.EqualTo(BotProfile.For(BotDifficulty.Normal).CombatJumps).Within(0.05f), $"at {1f / frame:0} fps");
+            }
         }
 
         [Test]

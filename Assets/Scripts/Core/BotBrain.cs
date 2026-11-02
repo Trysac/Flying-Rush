@@ -24,8 +24,13 @@ namespace FlyingRush.Core
         public float MovementPenalty;
         /// <summary>How fast the bot turns its view, degrees a second.</summary>
         public float TurnSpeed;
-        /// <summary>It only pulls the trigger when the aim is within this many degrees.</summary>
+        /// <summary>
+        /// It only pulls the trigger when its view is within this many degrees of where it means to
+        /// aim (the target plus its aim error).
+        /// </summary>
         public float FireCone;
+        /// <summary>Jumps a second it throws in while fighting.</summary>
+        public float CombatJumps;
         /// <summary>Below this share of health it backs off to cover.</summary>
         public float RetreatHealth;
         /// <summary>How far it notices enemies, in metres.</summary>
@@ -40,19 +45,19 @@ namespace FlyingRush.Core
             BotDifficulty.Easy => new BotProfile
             {
                 Difficulty = difficulty, Reaction = 0.75f, InitialError = 11f, SteadyError = 4.5f, SettleSeconds = 1.8f,
-                MovementPenalty = 0.6f, TurnSpeed = 150f, FireCone = 9f, RetreatHealth = 0.2f, SightRange = 45f, Burst = 0.3f,
+                MovementPenalty = 0.6f, TurnSpeed = 150f, FireCone = 3f, CombatJumps = 0.1f, RetreatHealth = 0.2f, SightRange = 45f, Burst = 0.3f,
                 DamageScale = 0.5f,
             },
             BotDifficulty.Hard => new BotProfile
             {
                 Difficulty = difficulty, Reaction = 0.26f, InitialError = 5f, SteadyError = 1.4f, SettleSeconds = 0.8f,
-                MovementPenalty = 0.2f, TurnSpeed = 400f, FireCone = 4f, RetreatHealth = 0.35f, SightRange = 90f, Burst = 0.7f,
+                MovementPenalty = 0.2f, TurnSpeed = 400f, FireCone = 1.2f, CombatJumps = 0.4f, RetreatHealth = 0.35f, SightRange = 90f, Burst = 0.7f,
                 DamageScale = 0.9f,
             },
             _ => new BotProfile
             {
                 Difficulty = BotDifficulty.Normal, Reaction = 0.45f, InitialError = 8f, SteadyError = 2.8f, SettleSeconds = 1.2f,
-                MovementPenalty = 0.4f, TurnSpeed = 260f, FireCone = 6f, RetreatHealth = 0.3f, SightRange = 65f, Burst = 0.45f,
+                MovementPenalty = 0.4f, TurnSpeed = 260f, FireCone = 2f, CombatJumps = 0.25f, RetreatHealth = 0.3f, SightRange = 65f, Burst = 0.45f,
                 DamageScale = 0.7f,
             },
         };
@@ -85,7 +90,7 @@ namespace FlyingRush.Core
         public float NearestPadDistance;
         /// <summary>Seconds since it was last hurt.</summary>
         public float SinceHurt;
-        /// <summary>The effective range of the weapon in hand.</summary>
+        /// <summary>How far the weapon in hand is worth firing from (<see cref="WeaponStats.EngageRange"/>).</summary>
         public float WeaponRange;
     }
 
@@ -99,6 +104,8 @@ namespace FlyingRush.Core
         /// <summary>Enemies closer than this are fought even when hurt: running would not help.</summary>
         public const float CornerDistance = 7f;
         public const float HuntMemory = 5f;
+        /// <summary>An enemy lost from sight this recently is still the fight: no detour for a weapon.</summary>
+        public const float FightMemory = 1.5f;
         public const float PadInterest = 35f;
 
         readonly Rng rng;
@@ -126,11 +133,23 @@ namespace FlyingRush.Core
             if (senses.EnemyVisible)
             {
                 bool hurt = senses.HealthFraction < Profile.RetreatHealth && senses.SinceHurt < Vitals.RegenDelaySeconds + 3f;
-                Goal = hurt && senses.EnemyDistance > CornerDistance ? BotGoal.Retreat : BotGoal.Engage;
+                if (hurt && senses.EnemyDistance > CornerDistance)
+                {
+                    Goal = BotGoal.Retreat;
+                }
+                else
+                {
+                    // Too far for the weapon in hand: close in along the waypoints first.
+                    Goal = senses.EnemyDistance <= senses.WeaponRange ? BotGoal.Engage : BotGoal.Hunt;
+                }
             }
             else if (Goal == BotGoal.Retreat && senses.HealthFraction < 0.8f)
             {
                 Goal = BotGoal.Retreat;
+            }
+            else if (senses.SinceEnemySeen < FightMemory)
+            {
+                Goal = BotGoal.Hunt;
             }
             else if (!senses.HasPowerWeapon && senses.NearestPadDistance < PadInterest)
             {
@@ -181,11 +200,11 @@ namespace FlyingRush.Core
 
         /// <summary>
         /// Whether to hold the trigger this frame: after reacting, when the view is close enough
-        /// to the target, in bursts for automatic weapons.
+        /// to where it means to aim, in bursts for automatic weapons.
         /// </summary>
-        public bool ShouldFire(float degreesOffTarget, bool automatic, float deltaTime)
+        public bool ShouldFire(float degreesOffAim, bool automatic, float deltaTime)
         {
-            if (!Reacted || degreesOffTarget > Profile.FireCone)
+            if (!Reacted || degreesOffAim > Profile.FireCone)
             {
                 return false;
             }
@@ -221,8 +240,8 @@ namespace FlyingRush.Core
             }
         }
 
-        /// <summary>Whether to throw in a jump while fighting (bots fly too).</summary>
-        public bool WantsCombatJump() => rng.Value() < (Profile.Difficulty == BotDifficulty.Easy ? 0.004f : 0.012f);
+        /// <summary>Whether to throw in a jump while fighting this frame (bots fly too).</summary>
+        public bool WantsCombatJump(float deltaTime) => rng.Value() < Profile.CombatJumps * deltaTime;
 
         /// <summary>A random waypoint index to roam to.</summary>
         public int PickRoamTarget(int nodeCount) => rng.Range(0, nodeCount);

@@ -29,6 +29,8 @@ namespace FlyingRush.Core
         /// <summary>Half-angle of the spread while aiming down the sights.</summary>
         public float AimSpread;
         public float Range;
+        /// <summary>How far a bot will stand and fight with it; beyond this it closes in first.</summary>
+        public float EngageRange;
         public float HeadshotMultiplier = 1f;
         /// <summary>Damage is full up to here, then falls off linearly...</summary>
         public float FalloffStart;
@@ -76,34 +78,34 @@ namespace FlyingRush.Core
             new WeaponStats
             {
                 Kind = WeaponKind.Rifle, Name = "ASSAULT RIFLE", Damage = 15f, FireInterval = 0.1f, Magazine = 30,
-                Reserve = -1, ReloadSeconds = 1.6f, Spread = 1.4f, AimSpread = 0.45f, Range = 140f,
+                Reserve = -1, ReloadSeconds = 1.6f, Spread = 1.4f, AimSpread = 0.45f, Range = 140f, EngageRange = 38f,
                 HeadshotMultiplier = 1.5f, FalloffStart = 30f, FalloffEnd = 70f, FalloffMinimum = 0.6f,
                 Automatic = true, AimFov = 60f, Recoil = 0.35f,
             },
             new WeaponStats
             {
                 Kind = WeaponKind.Shotgun, Name = "SHOTGUN", Damage = 13f, Pellets = 9, FireInterval = 0.85f,
-                Magazine = 6, Reserve = 18, ReloadSeconds = 2.2f, Spread = 6f, AimSpread = 4.5f, Range = 45f,
+                Magazine = 6, Reserve = 18, ReloadSeconds = 2.2f, Spread = 6f, AimSpread = 4.5f, Range = 45f, EngageRange = 16f,
                 HeadshotMultiplier = 1.25f, FalloffStart = 10f, FalloffEnd = 30f, FalloffMinimum = 0.3f,
                 AimFov = 72f, Recoil = 2.4f,
             },
             new WeaponStats
             {
                 Kind = WeaponKind.Sniper, Name = "SNIPER RIFLE", Damage = 100f, FireInterval = 1.2f, Magazine = 5,
-                Reserve = 15, ReloadSeconds = 2.4f, Spread = 4f, AimSpread = 0f, Range = 220f,
+                Reserve = 15, ReloadSeconds = 2.4f, Spread = 4f, AimSpread = 0f, Range = 220f, EngageRange = 120f,
                 HeadshotMultiplier = 2f, AimFov = 22f, Recoil = 3.5f,
             },
             new WeaponStats
             {
                 Kind = WeaponKind.Rockets, Name = "ROCKET LAUNCHER", Damage = 40f, FireInterval = 0.9f, Magazine = 4,
-                Reserve = 8, ReloadSeconds = 2.5f, Spread = 0f, AimSpread = 0f, Range = 160f,
+                Reserve = 8, ReloadSeconds = 2.5f, Spread = 0f, AimSpread = 0f, Range = 160f, EngageRange = 45f,
                 ProjectileSpeed = 32f, SplashRadius = 4.5f, SplashDamage = 90f, Knockback = 11f,
                 AimFov = 65f, Recoil = 2.8f,
             },
             new WeaponStats
             {
                 Kind = WeaponKind.Railgun, Name = "RAILGUN", Damage = 130f, FireInterval = 1.5f, Magazine = 3,
-                Reserve = 9, ReloadSeconds = 2.8f, Spread = 0.6f, AimSpread = 0f, Range = 220f,
+                Reserve = 9, ReloadSeconds = 2.8f, Spread = 0.6f, AimSpread = 0f, Range = 220f, EngageRange = 100f,
                 HeadshotMultiplier = 1.5f, Pierces = true, Knockback = 4f, AimFov = 40f, Recoil = 4f,
             },
         };
