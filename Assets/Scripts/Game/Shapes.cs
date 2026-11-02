@@ -11,6 +11,26 @@ namespace FlyingRush.Game
     public static class Shapes
     {
         static readonly Dictionary<Vector3, Mesh> Boxes = new Dictionary<Vector3, Mesh>();
+        static GameArt meshes;
+
+        /// <summary>Uses the primitive meshes the project builder stored in the art asset.</summary>
+        public static void Use(GameArt art) => meshes = art;
+
+        static Mesh MeshOf(PrimitiveType type)
+        {
+            if (meshes == null)
+            {
+                return null;
+            }
+            return type switch
+            {
+                PrimitiveType.Sphere => meshes.Sphere,
+                PrimitiveType.Capsule => meshes.Capsule,
+                PrimitiveType.Cylinder => meshes.Cylinder,
+                PrimitiveType.Quad => meshes.Quad,
+                _ => meshes.Cube,
+            };
+        }
 
         /// <summary>
         /// A box of the given size centred on its origin whose UVs run one unit per
@@ -76,12 +96,26 @@ namespace FlyingRush.Game
             return box;
         }
 
-        /// <summary>A Unity primitive without its collider.</summary>
+        /// <summary>
+        /// A Unity primitive's mesh without a collider. Creating real primitives and removing their
+        /// colliders would need the collider classes, which a stripped WebGL player leaves out.
+        /// </summary>
         public static GameObject Primitive(PrimitiveType type, string name, Transform parent, Vector3 localPosition, Vector3 scale, Material material)
         {
-            GameObject shape = GameObject.CreatePrimitive(type);
+            GameObject shape;
+            Mesh mesh = MeshOf(type);
+            if (mesh != null)
+            {
+                shape = new GameObject(name);
+                shape.AddComponent<MeshFilter>().sharedMesh = mesh;
+                shape.AddComponent<MeshRenderer>();
+            }
+            else
+            {
+                shape = GameObject.CreatePrimitive(type);
+                Object.Destroy(shape.GetComponent<Collider>());
+            }
             shape.name = name;
-            Object.Destroy(shape.GetComponent<Collider>());
             shape.transform.SetParent(parent, false);
             shape.transform.localPosition = localPosition;
             shape.transform.localScale = scale;

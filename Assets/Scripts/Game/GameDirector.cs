@@ -76,6 +76,7 @@ namespace FlyingRush.Game
 
         void Awake()
         {
+            Shapes.Use(art);
             view = Camera.main;
             store = new PlayerPrefsStore();
             LoadPreferences();

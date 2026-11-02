@@ -172,13 +172,9 @@ namespace FlyingRush.Game
 
         void LaunchRocket(FighterBody shooter, Vector3 eye, Vector3 direction, WeaponStats stats)
         {
-            var host = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-            UnityEngine.Object.Destroy(host.GetComponent<Collider>());
-            host.name = "Rocket";
+            GameObject host = Shapes.Primitive(PrimitiveType.Capsule, "Rocket", rocketParent, Vector3.zero,
+                new Vector3(0.16f, 0.25f, 0.16f), art.Pad);
             host.layer = Layers.Effect;
-            host.transform.SetParent(rocketParent, false);
-            host.transform.localScale = new Vector3(0.16f, 0.25f, 0.16f);
-            host.GetComponent<Renderer>().sharedMaterial = art.Pad;
             var rocket = host.AddComponent<Rocket>();
             // Start at the eye so a rocket fired point-blank into a wall cannot skip it.
             rocket.Launch(shooter, eye + direction * 0.2f, direction * stats.ProjectileSpeed, stats, this);

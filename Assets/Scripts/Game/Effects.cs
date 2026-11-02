@@ -146,13 +146,10 @@ namespace FlyingRush.Game
         {
             for (int i = 0; i < 9; i++)
             {
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                Destroy(cube.GetComponent<Collider>());
+                GameObject cube = Shapes.Primitive(PrimitiveType.Cube, "Piece", transform, Vector3.zero,
+                    Vector3.one * Random.Range(0.15f, 0.32f), material);
                 cube.layer = Layers.Effect;
-                cube.transform.SetParent(transform, false);
                 cube.transform.position = center + Random.insideUnitSphere * 0.5f;
-                cube.transform.localScale = Vector3.one * Random.Range(0.15f, 0.32f);
-                cube.GetComponent<Renderer>().sharedMaterial = material;
                 pieces.Add(new Piece
                 {
                     Transform = cube.transform,
@@ -272,13 +269,9 @@ namespace FlyingRush.Game
                     return flash;
                 }
             }
-            GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
-            Destroy(quad.GetComponent<Collider>());
-            quad.name = "Glow";
+            GameObject quad = Shapes.Primitive(PrimitiveType.Quad, "Glow", transform, Vector3.zero, Vector3.one, art.Glow);
             quad.layer = Layers.Effect;
-            quad.transform.SetParent(transform, false);
             var renderer = quad.GetComponent<Renderer>();
-            renderer.sharedMaterial = art.Glow;
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             var created = new Flash { Transform = quad.transform, Renderer = renderer };
             flashes.Add(created);

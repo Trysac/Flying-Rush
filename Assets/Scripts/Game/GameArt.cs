@@ -21,6 +21,13 @@ namespace FlyingRush.Game
         public Material Pad;
         public Material Sky;
 
+        [Header("Unity's primitive meshes, so models need no throwaway colliders")]
+        public Mesh Cube;
+        public Mesh Sphere;
+        public Mesh Capsule;
+        public Mesh Cylinder;
+        public Mesh Quad;
+
         [Header("Fighters and effects")]
         public Material Fighter;
         public Material Visor;

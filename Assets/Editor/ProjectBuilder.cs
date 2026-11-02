@@ -161,6 +161,11 @@ namespace FlyingRush.EditorTools
             art.Glow = Additive("Glow", additive, dot);
             art.Spark = Additive("Spark", additive, dot);
             art.Sky = CreateSky();
+            art.Cube = BuiltinMesh(PrimitiveType.Cube);
+            art.Sphere = BuiltinMesh(PrimitiveType.Sphere);
+            art.Capsule = BuiltinMesh(PrimitiveType.Capsule);
+            art.Cylinder = BuiltinMesh(PrimitiveType.Cylinder);
+            art.Quad = BuiltinMesh(PrimitiveType.Quad);
 
             art.Rifle = Clip("rifle");
             art.Shotgun = Clip("shotgun");
@@ -192,6 +197,15 @@ namespace FlyingRush.EditorTools
             art.BattleMusic = Clip("battle_theme", music: true);
             EditorUtility.SetDirty(art);
             return art;
+        }
+
+        /// <summary>The built-in mesh of a Unity primitive (a reference to Unity's own asset).</summary>
+        static Mesh BuiltinMesh(PrimitiveType type)
+        {
+            GameObject primitive = GameObject.CreatePrimitive(type);
+            Mesh mesh = primitive.GetComponent<MeshFilter>().sharedMesh;
+            UnityEngine.Object.DestroyImmediate(primitive);
+            return mesh;
         }
 
         static Material MaterialAt(string name, Shader shader)
