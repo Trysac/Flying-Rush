@@ -29,6 +29,11 @@ MonoBehaviour:
   Grid: {fileID: 2100000, guid: a7bd2a0883a204944b375cf5c9fa98e1, type: 2}
   Pad: {fileID: 2100000, guid: 2914fffe7e8705c42bb6a622422a6d0a, type: 2}
   Sky: {fileID: 2100000, guid: 916a761cd1603fd43be4d3d10d13779d, type: 2}
+  Cube: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  Sphere: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  Capsule: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  Cylinder: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  Quad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   Fighter: {fileID: 2100000, guid: fd05fb65a8aa90c4c97bae69ad061b00, type: 2}
   Visor: {fileID: 2100000, guid: fbed17a46d7c9c0438e0e34c7d52b50f, type: 2}
   Gun: {fileID: 2100000, guid: b8930a7640eefe140b99c64c5b4f0de8, type: 2}
