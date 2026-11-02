@@ -49,6 +49,7 @@ namespace FlyingRush.Game
         int lastCountdown;
         FighterBody lastKiller;
         RecordUpdate lastRecord;
+        bool hadLock;
 
         public GameScreen Screen { get; private set; } = GameScreen.Title;
         public Match Match => arena?.Match;
@@ -290,8 +291,16 @@ namespace FlyingRush.Game
             input.Sensitivity = Settings.Sensitivity;
             input.InvertY = Settings.InvertY;
             bool locked = Screen == GameScreen.Playing && !ScriptedInput;
+            // A browser gives up the pointer lock on Esc without passing the key on: pause then.
+            if (locked && hadLock && Cursor.lockState != CursorLockMode.Locked && !Application.isBatchMode)
+            {
+                hadLock = false;
+                TogglePause();
+                return;
+            }
             UpdateCursor(locked);
-            input.MouseLook = locked && Cursor.lockState == CursorLockMode.Locked;
+            hadLock = locked && Cursor.lockState == CursorLockMode.Locked;
+            input.MouseLook = hadLock;
             input.Read();
 
             if (hud.MenuVisible)
