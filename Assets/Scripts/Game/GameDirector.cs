@@ -143,6 +143,7 @@ namespace FlyingRush.Game
 
         void BeginMatch(MatchSettings rules, int botCount, BotDifficulty difficulty, bool demoMatch)
         {
+            RecordUnshownResult();
             ClearFighters();
             demo = demoMatch;
             resultsShown = false;
@@ -691,6 +692,18 @@ namespace FlyingRush.Game
             audioDirector.Play(won ? art.Win : art.Lose, 0.9f);
             Time.timeScale = 0.35f;
             slowMotionLeft = EndSlowMotionSeconds;
+        }
+
+        /// <summary>
+        /// Quitting or restarting from the pause menu during the round-end delay skips the results
+        /// screen, which is where a finished match is recorded; record it here instead.
+        /// </summary>
+        void RecordUnshownResult()
+        {
+            Match match = arena.Match;
+            if (demo || resultsShown || match == null || match.Phase != MatchPhase.Ended) return;
+            resultsShown = true;
+            lastRecord = Records.Submit(MatchSummary.Of(match));
         }
 
         void ShowResults()

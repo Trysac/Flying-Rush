@@ -258,6 +258,31 @@ namespace FlyingRush.Tests
         }
 
         [UnityTest]
+        public IEnumerator LeavingFromPauseDuringTheRoundEndStillRecordsTheMatch()
+        {
+            yield return Load();
+            var rules = MatchSettings.For(MatchMode.FreeForAll);
+            rules.KillLimit = 1;
+            director.StartMatch(rules, 3, BotDifficulty.Normal);
+            director.ScriptedInput = true;
+            yield return new WaitForSeconds(rules.CountdownSeconds + 0.2f);
+            Match match = director.Match;
+            Fighter bot = match.Fighters.First(f => !f.IsPlayer);
+            match.Tick(Vitals.SpawnProtectionSeconds);
+            match.Damage(match.Player.Id, bot.Id, 999f, WeaponKind.Rifle, false);
+            Assert.That(match.Phase, Is.EqualTo(MatchPhase.Ended));
+            yield return null;
+
+            director.TogglePause();
+            Assert.That(director.Screen, Is.EqualTo(GameScreen.Paused));
+            director.Activate("title");
+            yield return null;
+
+            Assert.That(director.Records.Matches(MatchMode.FreeForAll), Is.EqualTo(1), "the finished match is recorded");
+            Assert.That(director.Records.Wins(MatchMode.FreeForAll), Is.EqualTo(1));
+        }
+
+        [UnityTest]
         public IEnumerator PauseFreezesTheMatchAndResumeCarriesOn()
         {
             yield return Load();
