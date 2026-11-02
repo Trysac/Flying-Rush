@@ -56,10 +56,10 @@ ffmpeg). The README screenshots come from an opt-in hook: run a built player wit
 |---|---|---|
 | Move / look | WASD / mouse | Left stick / right stick |
 | Jump, up to seven times in the air | Space | A or LB |
-| Crouch (the tunnels need it) | Ctrl or C | B or right stick click |
+| Crouch (the tunnels need it) | Left Ctrl or C | B or right stick click |
 | Shoot / aim down the sights | Left / right mouse button | RT / LT |
 | Reload | R | X |
-| Switch weapon | Q, 1, 2 or the wheel | Y or RB |
+| Switch weapon | Q, 1, 2 or the wheel (each press swaps between the rifle and the power weapon) | Y or RB |
 | Scoreboard | Tab (held) | View (held) |
 | Pause | Esc or P | Start |
 | Menus | ↑ / ↓ or the mouse to choose, ← / → to change a value, Enter to select, Esc to go back | D-pad or stick, A to select, B to go back |
@@ -70,8 +70,8 @@ ffmpeg). The README screenshots come from an opt-in hook: run a built player wit
   points, seven jumps, an assault rifle to start with and the power weapons up high: the values
   of the original game's settings. A match starts with a three-second countdown, fighters come
   back three seconds after dying at the spawn farthest from their enemies, and the round ends
-  five seconds after the last kill. Added: team deathmatch (two teams of four from the two
-  bases, first team to 30, no friendly fire), an optional 5 or 10 minute time limit, spawn
+  five seconds after the last kill. Added: team deathmatch (the player and the bots split into two teams from the two
+  bases, first team to 30, no friendly fire), a 5 or 10 minute time limit (10 by default, or off as in 2021), spawn
   protection and health that regenerates 20 a second after 5 seconds without damage.
 - **Flying.** A ground jump and six air jumps, each one refilled when you land, take you up
   about 11 metres: onto the containers, the sniper towers, the ledges on the cage walls and the
@@ -102,7 +102,7 @@ ffmpeg). The README screenshots come from an opt-in hook: run a built player wit
   references, covered by 94 deterministic EditMode tests: seeded generators make spread and
   aim errors repeatable, and the tests check things like "every waypoint can be reached from
   every spawn", "every block has a half-turn twin so neither team has the better side" and
-  "no link climbs higher than the jumps allow". 14 PlayMode tests drive the real scene: title,
+  "no link climbs higher than the jumps allow". 15 PlayMode tests drive the real scene: title,
   countdown, shooting a bot dead, respawning, weapon pads, the kill limit and the results,
   pause, restart, team deathmatch, settings, falling out and bots finding their way round.
 - **The map as data.** The cage is a list of boxes in the core. The game turns it into meshes
