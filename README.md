@@ -19,6 +19,16 @@ longer run it (see [Where it came from](#where-it-came-from)).
 | ![The scoreboard and the kill feed](docs/screenshots/scoreboard.png) | ![Results after a win, with the final standings](docs/screenshots/results.png) |
 | ![How to play](docs/screenshots/howto.png) | |
 
+## Play it
+
+- **In your browser:** [trysac.github.io/Flying-Rush](https://trysac.github.io/Flying-Rush/)
+- **On itch.io:** [trysac.itch.io/flying-rush](https://trysac.itch.io/flying-rush)
+- **Get the code:** fork this repository, or clone it:
+
+  ```bash
+  git clone https://github.com/Trysac/Flying-Rush.git
+  ```
+
 ## Run it
 
 1. Install **Unity 6000.3.27f1 (Unity 6 LTS)** with Unity Hub (add the Windows or Web build
