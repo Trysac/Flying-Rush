@@ -6,6 +6,8 @@ touching the ground again, so fights happen in the air as much as on the floor. 
 15 kills or team deathmatch to 30, five weapons, three bot difficulty levels, and it plays with
 a keyboard and mouse or a gamepad.
 
+![Gameplay](docs/media/gameplay.gif)
+
 It is a rebuild of a game I made in 2021 in Core, Manticore Games' platform, which can no
 longer run it (see [Where it came from](#where-it-came-from)).
 
