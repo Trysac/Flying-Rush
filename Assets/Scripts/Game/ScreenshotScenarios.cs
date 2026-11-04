@@ -13,6 +13,9 @@ namespace FlyingRush.Game
     /// (which have no command line) are unaffected. The same hook runs inside the editor
     /// (ProjectBuilder.CaptureScreenshots), which renders the camera and the HUD off screen and
     /// blends them, for machines that cannot run the player.
+    /// Adding <c>-frames N [-fps F]</c> records N frames per scenario at a fixed timestep instead of
+    /// one shot, into <c>&lt;folder&gt;/&lt;scenario&gt;/frame_0000.png...</c>; the <c>gameplay</c>
+    /// scenario keeps a fight going while it records (for the README GIF).
     /// </summary>
     public sealed class ScreenshotScenarios : MonoBehaviour
     {
@@ -22,6 +25,8 @@ namespace FlyingRush.Game
 
         string folder;
         string[] scenarios;
+        int frames;
+        int fps = 15;
         RenderTexture sceneTarget;
         RenderTexture uiTarget;
         GameDirector director;
@@ -37,6 +42,8 @@ namespace FlyingRush.Game
             var host = new GameObject(nameof(ScreenshotScenarios)).AddComponent<ScreenshotScenarios>();
             host.folder = target;
             host.scenarios = (Argument("-scenario") ?? DefaultScenarios).Split(',');
+            host.frames = int.TryParse(Argument("-frames"), out int frames) ? frames : 0;
+            host.fps = int.TryParse(Argument("-fps"), out int fps) && fps > 0 ? fps : 15;
         }
 
         IEnumerator Start()
@@ -56,6 +63,12 @@ namespace FlyingRush.Game
                 director.ScriptedInput = false;
                 director.BotsFrozen = false;
                 yield return Stage(scenario);
+                if (frames > 0)
+                {
+                    yield return Record(scenario);
+                    Time.timeScale = 1f;
+                    continue;
+                }
                 Texture2D shot;
                 if (Application.isEditor)
                 {
@@ -180,6 +193,17 @@ namespace FlyingRush.Game
                     }
                     yield return new WaitForSecondsRealtime(0.6f);
                     break;
+                case "gameplay":
+                    yield return Match(MatchMode.FreeForAll);
+                    director.Player.Body.Loadout.PickUp(WeaponKind.Rifle);
+                    PlacePlayer(new Vector3(-31f, 0f, 3f), 90f);
+                    Stand(Bot(0), new Vector3(-19f, 0f, 4.5f), 270f);
+                    Stand(Bot(1), new Vector3(-17f, 7.5f, 9f), 250f);
+                    Stand(Bot(2), new Vector3(-15f, 0f, -2f), 280f);
+                    StartCoroutine(Autopilot());
+                    yield return new WaitForSeconds(1.5f);
+                    director.Hud.ClearMessages();
+                    break;
                 case "pause":
                     yield return Match(MatchMode.FreeForAll);
                     yield return new WaitForSecondsRealtime(2f);
@@ -203,6 +227,111 @@ namespace FlyingRush.Game
             // Spawn protection off, so the staged hits land, and no countdown banner.
             director.Match.Tick(Vitals.SpawnProtectionSeconds);
             director.Hud.ClearMessages();
+        }
+
+        /// <summary>Writes the given number of frames at a fixed timestep (Time.captureFramerate).</summary>
+        IEnumerator Record(string scenario)
+        {
+            string target = Path.Combine(folder, scenario);
+            Directory.CreateDirectory(target);
+            Time.captureFramerate = fps;
+            for (int i = 0; i < frames; i++)
+            {
+                Texture2D shot;
+                if (Application.isEditor)
+                {
+                    yield return null;
+                    shot = CaptureOffscreen();
+                }
+                else
+                {
+                    yield return new WaitForEndOfFrame();
+                    shot = ScreenCapture.CaptureScreenshotAsTexture();
+                }
+                File.WriteAllBytes(Path.Combine(target, $"frame_{i:0000}.png"), shot.EncodeToPNG());
+                Destroy(shot);
+            }
+            Time.captureFramerate = 0;
+            Debug.Log($"Saved {frames} frames of {scenario}");
+        }
+
+        /// <summary>
+        /// Plays the player like a bot for the recording: turns toward the nearest bot, fires when on
+        /// target and chains air jumps, while the bots fight on. The player is kept at full health.
+        /// </summary>
+        IEnumerator Autopilot()
+        {
+            float jumpTimer = 0.2f;
+            int hop = 0;
+            while (director.Screen == GameScreen.Playing)
+            {
+                float dt = Time.deltaTime;
+                FighterBody body = director.Player.Body;
+                body.Fighter.Vitals.Revive();
+                FighterBody target = Nearest(body, out bool visible);
+                if (target != null)
+                {
+                    Vector3 to = target.Chest - body.Eye;
+                    float yaw = Mathf.Atan2(to.x, to.z) * Mathf.Rad2Deg;
+                    float pitch = Mathf.Atan2(to.y, new Vector2(to.x, to.z).magnitude) * Mathf.Rad2Deg;
+                    float turn = 1f - Mathf.Exp(-8f * dt);
+                    float newYaw = Mathf.LerpAngle(body.Yaw, yaw, turn);
+                    float newPitch = Mathf.Lerp(body.Pitch, pitch, turn);
+                    body.Look(newYaw, newPitch);
+                    bool onTarget = Mathf.Abs(Mathf.DeltaAngle(newYaw, yaw)) < 5f && Mathf.Abs(newPitch - pitch) < 5f;
+                    if (visible && onTarget && director.Combat.Fire(body, body.AimDirection, false) == FireResult.Fired)
+                    {
+                        director.Player.Kick(body.Loadout.Current.Stats);
+                    }
+                }
+                // Chains the air jumps, swinging left and right, then drops back to the floor.
+                jumpTimer -= dt;
+                if (jumpTimer <= 0f)
+                {
+                    if (body.Jumps.Left > 0)
+                    {
+                        hop++;
+                        // Closes in on the target while far, circles it once close.
+                        float distance = target != null ? Vector3.Distance(body.Eye, target.Chest) : 0f;
+                        float side = (hop % 2 == 0 ? 1f : -1f) * (distance > 14f ? 30f : 80f);
+                        Vector3 wish = Quaternion.Euler(0f, body.Yaw + side, 0f) * Vector3.forward;
+                        body.Drive(wish, true, false, 0.02f);
+                        jumpTimer = 0.32f;
+                    }
+                    else
+                    {
+                        jumpTimer = body.Grounded ? 0.15f : 0.05f;
+                    }
+                }
+                yield return null;
+            }
+        }
+
+        /// <summary>The nearest living bot, preferring one in plain sight of the player.</summary>
+        FighterBody Nearest(FighterBody from, out bool visible)
+        {
+            FighterBody best = null;
+            float bestScore = float.MaxValue;
+            visible = false;
+            foreach (BotController bot in director.Bots)
+            {
+                FighterBody body = bot.Body;
+                if (!body.Fighter.Alive)
+                {
+                    continue;
+                }
+                Vector3 to = body.Chest - from.Eye;
+                bool seen = Physics.Raycast(from.Eye, to.normalized, out RaycastHit hit, to.magnitude + 1f)
+                    && hit.collider.GetComponentInParent<FighterBody>() == body;
+                float score = to.magnitude + (seen ? 0f : 60f);
+                if (score < bestScore)
+                {
+                    best = body;
+                    bestScore = score;
+                    visible = seen;
+                }
+            }
+            return best;
         }
 
         FighterBody Bot(int index) => director.Bots[index].Body;
